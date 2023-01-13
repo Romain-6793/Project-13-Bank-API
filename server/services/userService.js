@@ -94,3 +94,19 @@ module.exports.updateUserProfile = async serviceData => {
     throw new Error(error)
   }
 }
+
+module.exports.getUsers = async () => {
+  try {
+    const users = await User.find({})
+    console.log(users)
+
+    if (!users) {
+      throw new Error('No users')
+    }
+
+    return users
+  } catch (error) {
+    console.error('Error in userService.js', error)
+    throw new Error(error)
+  }
+}
